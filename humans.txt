@@ -1,0 +1,8 @@
+/* Sample portfolio demo by Chandhini Software Solutions LLC */
+
+  Site: Petal & Polish Salon
+  Author: bayina
+  Contact: admin@chandhini.com
+  Source: https://github.com/bayina/salon-demo
+  Built with: HTML, CSS, vanilla JS
+  Last updated: ongoing
