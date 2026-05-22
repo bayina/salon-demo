@@ -44,3 +44,7 @@ Then open http://localhost:8000
 
 ## License
 MIT — see [LICENSE](LICENSE).
+
+## Screenshots
+
+Saved under `screenshots/`. Capture at 320, 768, and 1280 pixel widths after deploys.
