@@ -144,3 +144,140 @@ address { font-style: normal; line-height: 1.6; }
   html { scroll-behavior: auto; }
   .btn:hover { transform: none; }
 }
+
+/* ─── Production polish ───────────────────────────────────────── */
+
+/* Visible focus ring for keyboard nav, hidden for mouse users. */
+:focus { outline: none; }
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.btn:focus-visible {
+  outline-offset: 4px;
+}
+
+/* Skip-link: invisible until focused. */
+.skip-link {
+  position: absolute;
+  left: -9999px; top: auto;
+  background: var(--primary);
+  color: #fff;
+  padding: .5rem 1rem;
+  border-radius: 0 0 8px 0;
+  z-index: 100;
+  font-weight: 600;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  left: 0; top: 0;
+  outline: 3px solid #fff;
+  outline-offset: -3px;
+}
+
+/* Anchor jumps shouldn't sit flush at top of viewport. */
+.section { scroll-margin-top: 1.5rem; }
+
+/* Section heading inside menu/services tiers. */
+.menu-heading {
+  margin: 2rem 0 .75rem;
+  font-size: 1.25rem;
+  letter-spacing: .02em;
+  color: var(--primary);
+  border-bottom: 2px solid color-mix(in srgb, var(--primary) 25%, transparent);
+  padding-bottom: .35rem;
+}
+
+/* Hours list, used in contact section. */
+.hours-list {
+  list-style: none;
+  padding: 0;
+  margin: .75rem 0 0;
+  border: 1px solid color-mix(in srgb, var(--muted) 18%, transparent);
+  border-radius: var(--radius);
+  background: #fff;
+  overflow: hidden;
+  max-width: 32rem;
+}
+.hours-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .55rem .9rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--muted) 12%, transparent);
+}
+.hours-list li:last-child { border-bottom: 0; }
+.hours-list strong { font-weight: 600; }
+
+/* Polish form controls (used in clinic appointment form). */
+form select {
+  width: 100%;
+  padding: .55rem .7rem;
+  border: 1px solid color-mix(in srgb, var(--muted) 30%, transparent);
+  border-radius: 8px;
+  font: inherit;
+  background: #fff;
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--primary) 50%),
+    linear-gradient(135deg, var(--primary) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 12px) 50%;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 2rem;
+}
+form select:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Card lift adds a touch of depth on capable browsers. */
+.card {
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    border-color .18s ease;
+}
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px -8px color-mix(in srgb, var(--primary) 30%, transparent);
+    border-color: color-mix(in srgb, var(--primary) 25%, transparent);
+  }
+}
+
+/* Demo badge polish. */
+.demo-badge {
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--primary) 50%, transparent);
+}
+
+/* Subtle texture for placeholder images so they read as intentional. */
+.img-placeholder {
+  position: relative;
+}
+.img-placeholder::after {
+  content: "Photo placeholder";
+  position: absolute;
+  inset: auto 0 8px 0;
+  text-align: center;
+  font-size: .72rem;
+  color: var(--muted);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  opacity: .8;
+}
+
+/* Footer cleanup. */
+.site-footer { font-size: .875rem; }
+.site-footer p { margin: .35rem 0; }
+
+/* Print: hide nav, ensure black text on white. */
+@media print {
+  .site-header, .skip-link, .cta-row, .demo-badge { display: none; }
+  body { background: #fff; color: #000; }
+  a { color: #000; text-decoration: underline; }
+  .card, .hours-list, details { break-inside: avoid; }
+}
